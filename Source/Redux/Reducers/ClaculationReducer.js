@@ -1,7 +1,7 @@
 import {FourFunctions} from '../Actions/FourFunction'
 
 const initialState = {
-  displayValues: 0,
+  displayValues: '',
   result: 0
 }
 
@@ -24,10 +24,10 @@ export function calculationReducer(state=initialState, action){
 
         }
         case FourFunctions.PRESS:
-        // console.log(state)
+        console.log(state)
         return {
             ...state,
-            displayValues: action.value
+            displayValues: state.displayValues + action.value
         }
         default:
         return {...state}

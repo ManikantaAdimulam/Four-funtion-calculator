@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
     height: '20%',
     width: '100%',
     backgroundColor: 'black',
-    alignItems:'flex-end',
+    alignItems: 'flex-end',
     justifyContent: 'flex-end'
   },
-  textStyles:{
-      color: '#fff',
-      fontSize: 18,
-      fontWeight: '500'
+  textStyles: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '500'
   }
 })

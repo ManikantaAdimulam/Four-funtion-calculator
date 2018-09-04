@@ -38,7 +38,22 @@ class Main extends Component {
 
   onPress=(event)=>{
     const {dispatch} = this.props
-    dispatch(FourFunctionActions.press(event))
+    switch(event){
+        case '+':
+        dispatch(FourFunctionActions.add(event))
+        case '-':
+        dispatch(FourFunctionActions.subtract(event))
+        case 'x':
+        dispatch(FourFunctionActions.multiply(event))
+        case '/':
+        dispatch(FourFunctionActions.division(event))
+        case 'C':
+        dispatch(FourFunctionActions.clear(event))
+        case '=':
+        dispatch(FourFunctionActions.equal(event))
+        default:
+        dispatch(FourFunctionActions.press(event))
+    }
   }
   render() {
     return (

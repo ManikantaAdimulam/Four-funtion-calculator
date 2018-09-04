@@ -6,7 +6,9 @@ export const FourFunctions = {
   SUBTRACT: 'SUBTRACT',
   MULTIPLY: 'MULTIPLY',
   DIVISION: 'DIVISION',
-  PRESS: 'PRESS'
+  PRESS: 'PRESS',
+  EQUAL: 'EQUAL',
+  CLEAR: 'CLEAR'
 }
 
 /**
@@ -27,5 +29,11 @@ export const FourFunctionActions = {
   },
   press: (value) => {
     return { type: FourFunctions.PRESS, value }
+  },
+  equal: (value) => {
+    return { type: FourFunctions.EQUAL, value }
+  },
+  clear: (value) => {
+    return { type: FourFunctions.CLEAR, value }
   }
 }

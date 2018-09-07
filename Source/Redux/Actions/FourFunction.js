@@ -15,17 +15,17 @@ export const FourFunctions = {
  * Four function action
  */
 export const FourFunctionActions = {
-  add: (values) => {
-    return { type: FourFunctions.ADD, values }
+  add: (value) => {
+    return { type: FourFunctions.ADD, value }
   },
-  subtract: (values) => {
-    return { type: FourFunctions.SUBTRACT, values }
+  subtract: (value) => {
+    return { type: FourFunctions.SUBTRACT, value }
   },
-  multiply: (values) => {
-    return { type: FourFunctions.MULTIPLY, values }
+  multiply: (value) => {
+    return { type: FourFunctions.MULTIPLY, value }
   },
-  division: (values) => {
-    return { type: FourFunctions.DIVISION, values }
+  division: (value) => {
+    return { type: FourFunctions.DIVISION, value }
   },
   press: (value) => {
     return { type: FourFunctions.PRESS, value }

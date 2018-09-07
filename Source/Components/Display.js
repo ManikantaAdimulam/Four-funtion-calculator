@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 
-const Dispaly = ({ values }) => {
+const Dispaly = ({ values, result }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyles}>{values}</Text>
+      <Text style={styles.textStyles}>{result}</Text>
     </View>
   )
 }

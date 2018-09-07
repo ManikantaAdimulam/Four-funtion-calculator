@@ -7,8 +7,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Dimensions } from 'react-native'
 import { Button, Dispaly } from '../Components'
-import { FourFunctionActions } from '../Redux/Actions/FourFunction';
-import connect from 'react-redux/lib/connect/connect';
+import { FourFunctionActions } from '../Redux/Actions/FourFunction'
+import connect from 'react-redux/lib/connect/connect'
 
 class Main extends Component {
   constructor(props) {
@@ -31,38 +31,78 @@ class Main extends Component {
         'C',
         '=',
         'X'
-      ]
+      ],
+      lastEvent: '',
+      operations: ['+', '-', 'X', '/', '=']
     }
     this.onPress = this.onPress.bind(this)
+    this.values = ''
+    this.events = []
   }
 
-  onPress=(event)=>{
-    const {dispatch} = this.props
-    switch(event){
-        case '+':
-        dispatch(FourFunctionActions.add(event))
-        case '-':
-        dispatch(FourFunctionActions.subtract(event))
-        case 'x':
-        dispatch(FourFunctionActions.multiply(event))
-        case '/':
-        dispatch(FourFunctionActions.division(event))
-        case 'C':
+  onPress = (event) => {
+    this.setEvent(event)
+  }
+  setEvent = (event) => {
+    if (this.state.operations.indexOf(event) != -1) {
+      if (this.state.lastEvent != event) {
+        this.setState({ lastEvent: event }, () => {
+          this.performOperation(this.state.lastEvent, event)
+        })
+      }
+    } else {
+      this.performOperation(event, event)
+      if (this.state.lastEvent != '') {
+        this.performOperation(this.state.lastEvent, '')
+        this.setState({ lastEvent: '' })
+      }
+    }
+  }
+  performOperation = (event, val) => {
+    const { dispatch } = this.props
+    switch (event) {
+      case '+':
+        dispatch(FourFunctionActions.add(val))
+        return
+      case '-':
+        dispatch(FourFunctionActions.subtract(val))
+        return
+      case 'X':
+        dispatch(FourFunctionActions.multiply(val))
+        return
+      case '/':
+        dispatch(FourFunctionActions.division(val))
+        return
+      case 'C':
         dispatch(FourFunctionActions.clear(event))
-        case '=':
+        return
+      case '=':
+        // this.setState({lastEvent: event})
         dispatch(FourFunctionActions.equal(event))
-        default:
+        return
+      default:
         dispatch(FourFunctionActions.press(event))
     }
   }
   render() {
     return (
       <View style={styles.container}>
-        <Dispaly values={this.props.display.displayValues}/>
+        <Dispaly
+          values={this.props.display.displayValues}
+          result={this.props.display.result}
+        />
         <View style={styles.buttonsView}>
           <View style={styles.buttonsInnerView}>
             {this.state.numbers.map((number) => {
-              return <Button title={number} key={number} onPress={()=>{this.onPress(number)}}/>
+              return (
+                <Button
+                  title={number}
+                  key={number}
+                  onPress={() => {
+                    this.onPress(number)
+                  }}
+                />
+              )
             })}
           </View>
         </View>
@@ -70,8 +110,8 @@ class Main extends Component {
     )
   }
 }
-const mapStateToProps=(state)=>({
-    display: state.calculationReducer
+const mapStateToProps = (state) => ({
+  display: state.calculationReducer
 })
 
 export default connect(mapStateToProps)(Main)

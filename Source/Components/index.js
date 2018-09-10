@@ -1,4 +1,4 @@
 import Button from './Button'
-import Dispaly from './Display'
+import Display from './Display'
 
-export {Button,Dispaly}
+export {Button,Display}

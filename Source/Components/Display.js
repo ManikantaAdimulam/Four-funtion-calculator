@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 
-const Dispaly = ({ values, result }) => {
+const Display = ({ values, result }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyles}>{values}</Text>
@@ -9,7 +9,7 @@ const Dispaly = ({ values, result }) => {
     </View>
   )
 }
-export default Dispaly
+export default Display
 const styles = StyleSheet.create({
   container: {
     height: '20%',

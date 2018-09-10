@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, View, Dimensions } from 'react-native'
-import { Button, Dispaly } from '../Components'
+import { Button, Display } from '../Components'
 import { FourFunctionActions } from '../Redux/Actions/FourFunction'
 import connect from 'react-redux/lib/connect/connect'
 
@@ -87,7 +87,7 @@ class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Dispaly
+        <Display
           values={this.props.display.displayValues}
           result={this.props.display.result}
         />
